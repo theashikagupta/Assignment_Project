@@ -1,64 +1,4 @@
-/* ================= RECOMMENDATIONS SLIDER ================= */
-
-const sliderTrack = document.getElementById("sliderTrack");
-const sliderDotsContainer = document.getElementById("sliderDots");
-
-const recommendationCards = document.querySelectorAll(".recommendation-card");
-
-let currentSlide = 0;
-const totalSlides = recommendationCards.length;
-
-function createDots() {
-  for (let i = 0; i < totalSlides; i++) {
-    const dot = document.createElement("button");
-    dot.classList.add("slider-dot");
-
-    if (i === 0) {
-      dot.classList.add("active");
-    }
-
-    dot.addEventListener("click", function () {
-      currentSlide = i;
-      updateSlider();
-    });
-
-    sliderDotsContainer.appendChild(dot);
-  }
-}
-
-function updateSlider() {
-  const cardWidth = recommendationCards[0].offsetWidth + 25;
-
-  sliderTrack.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
-
-  const dots = document.querySelectorAll(".slider-dot");
-
-  dots.forEach(function (dot, index) {
-    if (index === currentSlide) {
-      dot.classList.add("active");
-    } else {
-      dot.classList.remove("active");
-    }
-  });
-}
-
-function autoSlide() {
-  currentSlide++;
-
-  if (currentSlide >= totalSlides) {
-    currentSlide = 0;
-  }
-
-  updateSlider();
-}
-
-if (sliderTrack && sliderDotsContainer && recommendationCards.length > 0) {
-  createDots();
-  setInterval(autoSlide, 5000);
-}
-
-
-/* ================= CONTACT FORM MODAL ================= */
+//modal code
 
 const contactForm = document.getElementById("contactForm");
 const modalOverlay = document.getElementById("modalOverlay");
@@ -89,3 +29,184 @@ if (contactForm && modalOverlay && modalCloseBtn) {
     }
   });
 }
+
+
+
+// //slider code
+
+//   const sliderTrack = document.getElementById("sliderTrack");
+//   const sliderDots = document.getElementById("sliderDots");
+
+//   const originalCards = Array.from(sliderTrack.children);
+
+//   const cardWidth = 340;
+//   const gap = 25;
+//   const halfCard = cardWidth / 2; // 170
+//   const step = cardWidth + gap;   // 365
+
+//   // We need clones because only 5 real cards are not enough
+//   const lastClone = originalCards[originalCards.length - 1].cloneNode(true);
+//   sliderTrack.insertBefore(lastClone, sliderTrack.firstChild);
+
+//   // first 4 cards clone karke end me daalo
+//   originalCards.slice(0, 4).forEach((card) => {
+//     sliderTrack.appendChild(card.cloneNode(true));
+//   });
+
+//   let currentSlide = 0;
+//   let autoSlide;
+
+//   // dots create
+//   sliderDots.innerHTML = "";
+//   originalCards.forEach((_, index) => {
+//     const dot = document.createElement("span");
+//     dot.classList.add("slider-dot");
+//     if (index === 0) dot.classList.add("active");
+
+//     dot.addEventListener("click", () => {
+//       currentSlide = index;
+//       updateSlider(true);
+//       resetAutoSlide();
+//     });
+
+//     sliderDots.appendChild(dot);
+//   });
+
+//   const dots = sliderDots.querySelectorAll(".slider-dot");
+
+//   function updateDots() {
+//     dots.forEach((dot) => dot.classList.remove("active"));
+//     dots[currentSlide % originalCards.length].classList.add("active");
+//   }
+
+//   function updateSlider(animate = true) {
+//     if (!animate) {
+//       sliderTrack.style.transition = "none";
+//     } else {
+//       sliderTrack.style.transition = "transform 0.5s ease";
+//     }
+
+//     const translateX = -(halfCard + currentSlide * step);
+//     sliderTrack.style.transform = `translateX(${translateX}px)`;
+
+//     updateDots();
+//   }
+
+//   function nextSlide() {
+//     currentSlide++;
+//     updateSlider(true);
+//   }
+
+//   sliderTrack.addEventListener("transitionend", () => {
+//     if (currentSlide === originalCards.length) {
+//       currentSlide = 0;
+//       updateSlider(false);
+
+//       // force reflow so browser transition reset properly
+//       void sliderTrack.offsetWidth;
+
+//       sliderTrack.style.transition = "transform 0.5s ease";
+//       updateDots();
+//     }
+//   });
+
+//   function startAutoSlide() {
+//     autoSlide = setInterval(nextSlide, 5000);
+//   }
+
+//   function resetAutoSlide() {
+//     clearInterval(autoSlide);
+//     startAutoSlide();
+//   }
+
+//   updateSlider(false);
+//   startAutoSlide();
+
+
+const sliderTrack = document.getElementById("sliderTrack");
+const cards = document.querySelectorAll(".recommendation-card");
+const dotsContainer = document.getElementById("sliderDots");
+
+let currentSlide = 0;
+
+function getSliderValues() {
+  const card = cards[0];
+  const gap = parseInt(window.getComputedStyle(sliderTrack).gap) || 0;
+  const cardWidth = card.offsetWidth;
+  const step = cardWidth + gap;
+
+  let sideOffset = 0;
+
+  /*
+    Desktop design:
+    Keep fixed side padding and move only cards.
+    This helps maintain half-card visibility.
+  */
+  if (window.innerWidth > 900) {
+    sideOffset = 130;
+  } else {
+    sideOffset = 0;
+  }
+
+  return { step, sideOffset };
+}
+
+function updateSlider() {
+  const { step, sideOffset } = getSliderValues();
+
+  sliderTrack.style.transform = `translateX(${sideOffset - currentSlide * step}px)`;
+
+  document.querySelectorAll(".slider-dot").forEach((dot, index) => {
+    dot.classList.toggle("active", index === currentSlide);
+  });
+}
+
+cards.forEach((_, index) => {
+  const dot = document.createElement("span");
+  dot.classList.add("slider-dot");
+
+  if (index === 0) {
+    dot.classList.add("active");
+  }
+
+  dot.addEventListener("click", () => {
+    currentSlide = index;
+    updateSlider();
+  });
+
+  dotsContainer.appendChild(dot);
+});
+
+setInterval(() => {
+  currentSlide++;
+
+  if (currentSlide >= cards.length) {
+    currentSlide = 0;
+  }
+
+  updateSlider();
+}, 5000);
+
+window.addEventListener("resize", () => {
+  currentSlide = 0;
+  updateSlider();
+});
+
+updateSlider();
+
+
+const hamburgerBtn = document.getElementById("hamburgerBtn");
+const navMenu = document.getElementById("navMenu");
+const navLinks = document.querySelectorAll(".nav-link");
+
+hamburgerBtn.addEventListener("click", () => {
+  hamburgerBtn.classList.toggle("active");
+  navMenu.classList.toggle("active");
+});
+
+navLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    hamburgerBtn.classList.remove("active");
+    navMenu.classList.remove("active");
+  });
+});

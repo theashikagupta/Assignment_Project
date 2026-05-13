@@ -21,11 +21,14 @@
 
   <header class="site-header">
     <nav class="navbar" aria-label="Main Navigation">
-
       <a href="#home" class="logo">
-        <img src="./assets/images/logo.png" alt="Logo" />
+        <img src="./assets/images/Logo.png" alt="Logo" />
       </a>
-
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu">
+       <span></span>
+    <span></span>
+    <span></span>
+  </button>
       <ul class="nav-menu">
         <li><a href="#home" class="nav-link active">Home</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
@@ -34,7 +37,6 @@
         <li><a href="#recommendations" class="nav-link">Recommendations</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
-
     </nav>
   </header>
 
@@ -43,12 +45,17 @@
     <section class="hero-section" id="home">
       <div class="hero-container">
 
-        <span class="shape circle-yellow"></span>
+        <span class="shape circle-yellow-one"></span>
         <span class="shape circle-green-one"></span>
         <span class="shape circle-green-two"></span>
+        <span class="shape circle-yellow-two"></span>
         <span class="shape square-blue"></span>
         <span class="shape square-yellow"></span>
-        <span class="shape triangle-red"></span>
+        <span class="shape triangle-red">
+  <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M11.5 2L21 20H2L11.5 2Z" stroke="#FF3D00" stroke-width="2" fill="none"/>
+  </svg>
+</span>
 
         <div class="hero-content">
           <h1>
@@ -57,8 +64,7 @@
           </h1>
 
           <p>
-            Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit.
-            Et, Volutpat Feugiat Placerat Lobortis. Natoque Rutrum
+            Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Et, Volutpat Feugiat Placerat Lobortis. Natoque Rutrum
             Semper Sed Suspendisse Nunc Lectus.
           </p>
 
@@ -75,7 +81,7 @@
     </section>
 
 
-    <!-- ================= PROJECTS SECTION ================= -->
+    <!-- PROJECTS SECTION -->
     <section class="projects-section" id="projects">
       <div class="section-heading">
         <h2>Projects</h2>
@@ -88,7 +94,7 @@
       <div class="projects-grid">
 
         <article class="project-card">
-          <img src="./assets/images/project-1.png" alt="Project image" />
+          <img src="./assets/images/Image (1).png" alt="Project image" />
           <div class="project-content">
             <h3>How To Make Flyer Design</h3>
             <p>Lorem Ipsum Dolor Sit Amet, Consec Adipiscing Elit Awd And Lorem Ipsum...</p>
@@ -104,7 +110,7 @@
         </article>
 
         <article class="project-card">
-          <img src="./assets/images/project-2.png" alt="Project image" />
+          <img src="./assets/images/Image (2).png" alt="Project image" />
           <div class="project-content">
             <h3>How To Make Flyer Design</h3>
             <p>Lorem Ipsum Dolor Sit Amet, Consec Adipiscing Elit Awd And Lorem Ipsum...</p>
@@ -120,7 +126,7 @@
         </article>
 
         <article class="project-card">
-          <img src="./assets/images/project-3.png" alt="Project image" />
+          <img src="./assets/images/Image (3).png" alt="Project image" />
           <div class="project-content">
             <h3>How To Make Flyer Design</h3>
             <p>Lorem Ipsum Dolor Sit Amet, Consec Adipiscing Elit Awd And Lorem Ipsum...</p>
@@ -136,7 +142,7 @@
         </article>
 
         <article class="project-card">
-          <img src="./assets/images/project-4.png" alt="Project image" />
+          <img src="./assets/images/Image (4).png" alt="Project image" />
           <div class="project-content">
             <h3>How To Make Flyer Design</h3>
             <p>Lorem Ipsum Dolor Sit Amet, Consec Adipiscing Elit Awd And Lorem Ipsum...</p>
@@ -152,7 +158,7 @@
         </article>
 
         <article class="project-card">
-          <img src="./assets/images/project-5.png" alt="Project image" />
+          <img src="./assets/images/Image (5).png" alt="Project image" />
           <div class="project-content">
             <h3>How To Make Flyer Design</h3>
             <p>Lorem Ipsum Dolor Sit Amet, Consec Adipiscing Elit Awd And Lorem Ipsum...</p>
@@ -168,7 +174,7 @@
         </article>
 
         <article class="project-card">
-          <img src="./assets/images/project-6.png" alt="Project image" />
+          <img src="./assets/images/Image.png" alt="Project image" />
           <div class="project-content">
             <h3>How To Make Flyer Design</h3>
             <p>Lorem Ipsum Dolor Sit Amet, Consec Adipiscing Elit Awd And Lorem Ipsum...</p>
@@ -187,7 +193,7 @@
     </section>
 
 
-    <!-- ================= RECOMMENDATIONS SECTION ================= -->
+    <!-- RECOMMENDATIONS SECTION  -->
     <section class="recommendations-section" id="recommendations">
       <div class="section-heading">
         <h2>Recommendations</h2>
@@ -203,14 +209,21 @@
           <div class="slider-track" id="sliderTrack">
 
             <article class="recommendation-card">
-              <div class="stars">★ ★ ★ ★ ★</div>
+              <div class="stars" aria-label="5 star rating">
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+</div>
               <h3>Great Quality!</h3>
               <p>
                 Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit.
                 Vitae Nulla Diam In Ac Dictum A Urna Viverra Morbi.
+                Morbi Donec Amet...
               </p>
               <div class="client">
-                <img src="./assets/images/user-1.png" alt="James Gouse" />
+                <img src="./assets/images/Profile (1).png" alt="James Gouse" />
                 <div>
                   <h4>James Gouse</h4>
                   <span>Graphic Designer</span>
@@ -219,14 +232,21 @@
             </article>
 
             <article class="recommendation-card">
-              <div class="stars">★ ★ ★ ★ ★</div>
+                <div class="stars" aria-label="5 star rating">
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+</div>
               <h3>Amazing Work!</h3>
               <p>
                 Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit.
                 Vitae Nulla Diam In Ac Dictum A Urna Viverra Morbi.
+                Morbi Donec Amet...
               </p>
               <div class="client">
-                <img src="./assets/images/user-2.png" alt="Tiana Philips" />
+                <img src="./assets/images/Profile.jpg" alt="Tiana Philips" />
                 <div>
                   <h4>Tiana Philips</h4>
                   <span>Photographer</span>
@@ -235,53 +255,132 @@
             </article>
 
             <article class="recommendation-card">
-              <div class="stars">★ ★ ★ ★ ★</div>
+                <div class="stars" aria-label="5 star rating">
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+</div>
               <h3>Great Quality!</h3>
               <p>
                 Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit.
                 Vitae Nulla Diam In Ac Dictum A Urna Viverra Morbi.
               </p>
               <div class="client">
-                <img src="./assets/images/user-3.png" alt="Talan Westervelt" />
+                <img src="./assets/images/Profile (2).png" alt="Talan Westervelt" />
                 <div>
                   <h4>Talan Westervelt</h4>
                   <span>Business Man</span>
                 </div>
               </div>
             </article>
-
             <article class="recommendation-card">
-              <div class="stars">★ ★ ★ ★ ★</div>
+              <div class="stars" aria-label="5 star rating">
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+</div>
               <h3>Great Quality!</h3>
               <p>
                 Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit.
                 Vitae Nulla Diam In Ac Dictum A Urna Viverra Morbi.
+                Morbi Donec Amet...
               </p>
               <div class="client">
-                <img src="./assets/images/user-4.png" alt="Client" />
+                <img src="./assets/images/Profile (1).png" alt="James Gouse" />
                 <div>
                   <h4>James Gouse</h4>
                   <span>Graphic Designer</span>
                 </div>
               </div>
             </article>
-
             <article class="recommendation-card">
-              <div class="stars">★ ★ ★ ★ ★</div>
+              <div class="stars" aria-label="5 star rating">
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+</div>
+              <h3>Great Quality!</h3>
+              <p>
+                Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit.
+                Vitae Nulla Diam In Ac Dictum A Urna Viverra Morbi.
+              </p>
+              <div class="client">
+                <img src="./assets/images/Profile (1).png" alt="Client" />
+                <div>
+                  <h4>James Gouse</h4>
+                  <span>Graphic Designer</span>
+                </div>
+              </div>
+            </article>
+            <article class="recommendation-card">
+                <div class="stars" aria-label="5 star rating">
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+</div>
+              <h3>Great Quality!</h3>
+              <p>
+                Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit.
+                Vitae Nulla Diam In Ac Dictum A Urna Viverra Morbi.
+              </p>
+              <div class="client">
+                <img src="./assets/images/Profile (2).png" alt="Talan Westervelt" />
+                <div>
+                  <h4>Talan Westervelt</h4>
+                  <span>Business Man</span>
+                </div>
+              </div>
+            </article>
+            <article class="recommendation-card">
+              <div class="stars" aria-label="5 star rating">
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+</div>
               <h3>Amazing Work!</h3>
               <p>
                 Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit.
                 Vitae Nulla Diam In Ac Dictum A Urna Viverra Morbi.
               </p>
               <div class="client">
-                <img src="./assets/images/user-5.png" alt="Client" />
+                <img src="./assets/images/Profile.jpg" alt="Client" />
                 <div>
                   <h4>Tiana Philips</h4>
                   <span>Photographer</span>
                 </div>
               </div>
             </article>
-
+            <article class="recommendation-card">
+                <div class="stars" aria-label="5 star rating">
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+  <img src="./assets/images/Shape.png" alt="" />
+</div>
+              <h3>Great Quality!</h3>
+              <p>
+                Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit.
+                Vitae Nulla Diam In Ac Dictum A Urna Viverra Morbi.
+              </p>
+              <div class="client">
+                <img src="./assets/images/Profile (2).png" alt="Talan Westervelt" />
+                <div>
+                  <h4>Talan Westervelt</h4>
+                  <span>Business Man</span>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
 
@@ -291,7 +390,7 @@
     </section>
 
 
-    <!-- ================= CONTACT SECTION ================= -->
+    <!-- CONTACT SECTION -->
     <section class="contact-section" id="contact">
       <div class="contact-container">
 
@@ -327,21 +426,27 @@
           <h2>Contact Information</h2>
 
           <div class="info-card">
-            <div class="info-icon">⌖</div>
+            <div class="info-icon">
+  <img src="./assets/icons/location.png" alt="Location icon" />
+</div>
             <p><span>Country:</span> <strong>Bangladesh</strong></p>
             <p><span>City:</span> <strong>Dhaka</strong></p>
             <p><span>Street:</span> <strong>35 Vhatara, Badda</strong></p>
           </div>
 
           <div class="info-card">
-            <div class="info-icon">✉</div>
+            <div class="info-icon">
+  <img src="./assets/icons/mail.png" alt="Email icon" />
+</div>
             <p><span>Email:</span> <strong>Youremail@Gmail.Com</strong></p>
             <p><span>Skype:</span> <strong>@Yourusername</strong></p>
             <p><span>Telegram:</span> <strong>@Yourusername</strong></p>
           </div>
 
           <div class="info-card">
-            <div class="info-icon">▣</div>
+            <div class="info-icon">
+  <img src="./assets/icons/Mobile.png" alt="Mobile icon" />
+</div>
             <p><span>Support Services:</span> <strong>15369</strong></p>
             <p><span>Office:</span> <strong>+58 (021)356 587 235</strong></p>
             <p><span>Personal:</span> <strong>+58 (021)356 587 235</strong></p>
@@ -352,63 +457,96 @@
     </section>
 
 
-    <!-- ================= LOGOS SECTION ================= -->
+    <!-- LOGOS SECTION -->
     <section class="logos-section">
-      <img src="./assets/images/logo-1.png" alt="Partner logo" />
-      <img src="./assets/images/logo-2.png" alt="Partner logo" />
-      <img src="./assets/images/logo-3.png" alt="Partner logo" />
-      <img src="./assets/images/logo-4.png" alt="Partner logo" />
+      <img src="./assets/images/group1.png" alt="Partner logo" />
+      <img src="./assets/images/group2.png" alt="Partner logo" />
+      <img src="./assets/images/group3.png" alt="Partner logo" />
+      <img src="./assets/images/group4.png" alt="Partner logo" />
     </section>
 
   </main>
 
+<!-- FOOTER -->
+<footer class="footer">
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="footer">
-    <div class="footer-container">
+  <!-- Top Logo -->
+  <section class="footer-top">
+    <img class="footer-logo" src="./assets/images/Logo.png" alt="Logo" />
+  </section>
 
-      <div class="footer-left">
-        <img class="footer-logo" src="./assets/images/logo.png" alt="Logo" />
+  <!-- Footer Main Content -->
+  <div class="footer-container">
 
-        <div class="rating-box">
-          <div class="rating-item">4.5/5 Rating On Lorem</div>
-          <div class="rating-item">9/10 Rating On Ipsum</div>
-          <div class="rating-item">4.5/5 Rating On Dorel</div>
+  
+    <div class="footer-left">
+      <div class="rating-box">
+
+        <div class="rating-group">
+          <img src="./assets/images/company1.jpg" alt="Company rating logo" />
+          <p>4.5/5 Rating On Lorem</p>
         </div>
-      </div>
 
-      <div class="footer-column">
-        <h3>Quick Links</h3>
-        <a href="#home">Home</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="#projects">Projects</a>
-        <a href="#recommendations">Recommendations</a>
-      </div>
+        <div class="rating-group">
+          <img src="./assets/images/company2.jpg" alt="Company rating logo" />
+          <p>9/10 Rating On Ipsum</p>
+        </div>
 
-      <div class="footer-column">
-        <h3>Portfolio</h3>
-        <a href="#">Frontend Development</a>
-        <a href="#">Backend Development</a>
-        <a href="#">Website Design</a>
-        <a href="#">Machine Learning</a>
-        <a href="#">Problem Solving & DSA</a>
-      </div>
+        <div class="rating-group">
+          <img src="./assets/images/company3.jpg" alt="Company rating logo" />
+          <p>4.5/5 Rating On Dorel</p>
+        </div>
 
-      <div class="footer-column">
-        <h3>Connect</h3>
-        <a href="#">LinkedIn</a>
-        <a href="#">Instagram</a>
-        <a href="#">Facebook</a>
       </div>
-
     </div>
 
-    <p class="copyright">© 2024 Copyright, All Right Reserved</p>
-  </footer>
+   
+    <div class="footer-column quick-links">
+      <h3>Quick Links</h3>
+
+      <a href="#home">Home</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#recommendations">Recommendations</a>
+    </div>
+
+  
+    <div class="footer-column portfolio-links">
+      <h3>Portfolio</h3>
+
+      <a href="#">Frontend Development</a>
+      <a href="#">Backend Development</a>
+      <a href="#">Website Design</a>
+      <a href="#">Machine Learning</a>
+      <a href="#">Problem Solving & DSA</a>
+    </div>
+
+    <div class="footer-column connect-links">
+      <h3>Connect</h3>
+
+      <a href="#">
+        <img src="./assets/images/Linkedin.png" alt="LinkedIn" />
+      </a>
+
+      <a href="#">
+        <img src="./assets/images/Instagram.svg" alt="Instagram" />
+      </a>
+
+      <a href="#">
+        <img src="./assets/images/Facebook.svg" alt="Facebook" />
+      </a>
+    </div>
+
+  </div>
+
+  
+  <p class="copyright">© 2024 Copyright, All Right Reserved</p>
+
+</footer>
 
 
-  <!-- ================= SUCCESS MODAL ================= -->
+  <!-- Modal --> 
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-box">
       <button class="modal-close" id="modalCloseBtn">&times;</button>
