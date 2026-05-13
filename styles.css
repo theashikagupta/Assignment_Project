@@ -18,6 +18,7 @@ body {
   font-family: "Open Sans", Arial, sans-serif;
   background-color: #f0f0f6;
   color: #2b2b2b;
+  margin: 0;
 }
 
 a {
@@ -38,6 +39,10 @@ button {
   font-family: inherit;
   cursor: pointer;
   border: none;
+}
+
+body.menu-open {
+  overflow: hidden;
 }
 
 section {
@@ -299,7 +304,7 @@ height: 75.99998474121094px;
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 60px 90px 55px;
+  padding: 60px 98px 55px;
 }
 
 .projects-grid {
@@ -386,10 +391,14 @@ height: 75.99998474121094px;
 .slider-wrapper {
   width: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .slider-window {
-  width: 100%;
+  width: 86.39%;
   max-width: 1440px;
   margin: 0 auto;
   overflow: hidden;
@@ -884,83 +893,42 @@ height: 75.99998474121094px;
 }
 
 
-.hamburger-btn {
-  display: none;
-  width: 42px;
-  height: 42px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  position: relative;
-  z-index: 10001;
-}
-
-.hamburger-btn span {
-  display: block;
-  width: 28px;
-  height: 3px;
-  background-color: #2b2b2b;
-  margin: 6px auto;
-  border-radius: 5px;
-  transition: 0.3s ease;
-}
-
-/* Mobile Navbar */
 @media (max-width: 900px) {
-  .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 9999;
-    background-color: #ffffff;
-  }
-
-  .navbar {
-    height: 80px;
-    padding: 0 24px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-  }
-
-  .logo {
-    width: 115px;
-  }
-
-  .logo img {
-    width: 115px;
-    height: auto;
-  }
 
   .hamburger-btn {
     display: block;
   }
 
   .nav-menu {
-    position: absolute;
+    position: fixed;
     top: 80px;
     left: 0;
     width: 100%;
     background-color: #ffffff;
+
+    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+
+    padding: 10px 0 14px;
     gap: 0;
-    padding: 18px 0 22px;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
 
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-12px);
     pointer-events: none;
-    transition: 0.3s ease;
+
+    transform: translateY(-12px);
+
+    transition: all 0.3s ease;
+
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
   }
 
   .nav-menu.active {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
     pointer-events: auto;
+    transform: translateY(0);
   }
 
   .nav-menu li {
@@ -970,19 +938,8 @@ height: 75.99998474121094px;
 
   .nav-link {
     width: 100%;
-    min-height: 44px;
-    padding: 12px 0;
-    font-size: 15px;
-    border-radius: 0;
+    padding: 14px 0;
   }
-
-  .nav-link.active,
-  .nav-link:hover {
-    background-color: #ffb400;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
 
   .hamburger-btn.active span:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
@@ -996,14 +953,9 @@ height: 75.99998474121094px;
     transform: translateY(-9px) rotate(-45deg);
   }
 }
-/* =========================================================
-   FINAL RESPONSIVE OVERRIDES
-   Added for mobile hamburger menu, one-card mobile layout,
-   footer visibility, and fixed-width overflow fixes.
-   Keep this block at the END of styles.css.
-========================================================= */
+   
 
-/* Desktop-safe hamburger default */
+
 .hamburger-btn {
   display: none;
   width: 42px;
@@ -1056,7 +1008,6 @@ height: 75.99998474121094px;
     scroll-margin-top: 80px;
   }
 
-  /* Header + hamburger dropdown */
   .site-header {
     position: fixed;
     top: 0;
@@ -1154,7 +1105,6 @@ height: 75.99998474121094px;
     padding-right: 0;
   }
 
-  /* Hero mobile */
   .hero-section {
     overflow: hidden;
   }
@@ -1213,7 +1163,6 @@ height: 75.99998474121094px;
     display: none;
   }
 
-  /* Section headings */
   .section-heading {
     padding: 0 20px;
     margin-bottom: 35px;
@@ -1230,7 +1179,6 @@ height: 75.99998474121094px;
     line-height: 22px;
   }
 
-  /* Projects: one card per row */
   .projects-section {
     width: 100%;
     padding: 45px 20px;
@@ -1257,7 +1205,7 @@ height: 75.99998474121094px;
     padding: 16px;
   }
 
-  /* Recommendations: one card visible on mobile */
+ 
   .recommendations-section {
     padding: 45px 0 35px;
   }
@@ -1296,7 +1244,7 @@ height: 75.99998474121094px;
     height: 65px;
   }
 
-  /* Contact */
+  
   .contact-section {
     width: 100%;
     padding: 35px 20px;
@@ -1345,7 +1293,7 @@ height: 75.99998474121094px;
     font-size: 14px;
   }
 
-  /* Logos */
+ 
   .logos-section {
     width: 100%;
     height: auto;
@@ -1362,7 +1310,7 @@ height: 75.99998474121094px;
     left: auto;
   }
 
-  /* Footer: keep text inside screen */
+  
   .footer {
     width: 100%;
     height: auto;
@@ -1388,6 +1336,8 @@ height: 75.99998474121094px;
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px;
+    justify-items: center;
+    text-align: center;
   }
 
   .footer-left,
@@ -1401,6 +1351,27 @@ height: 75.99998474121094px;
 
   .connect-links {
     height: auto;
+  }
+
+  .footer-left,
+  .footer-column,
+  .rating-box {
+    align-items: center;
+  }
+
+  .footer-top,
+  .footer-column,
+  .footer-column a,
+  .rating-group,
+  .connect-links a {
+    text-align: center;
+  }
+
+  .footer-logo,
+  .rating-group img,
+  .connect-links img {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .footer-column h3 {

@@ -29,140 +29,85 @@ if (contactForm && modalOverlay && modalCloseBtn) {
     }
   });
 }
-
-
-
-// //slider code
-
-//   const sliderTrack = document.getElementById("sliderTrack");
-//   const sliderDots = document.getElementById("sliderDots");
-
-//   const originalCards = Array.from(sliderTrack.children);
-
-//   const cardWidth = 340;
-//   const gap = 25;
-//   const halfCard = cardWidth / 2; // 170
-//   const step = cardWidth + gap;   // 365
-
-//   // We need clones because only 5 real cards are not enough
-//   const lastClone = originalCards[originalCards.length - 1].cloneNode(true);
-//   sliderTrack.insertBefore(lastClone, sliderTrack.firstChild);
-
-//   // first 4 cards clone karke end me daalo
-//   originalCards.slice(0, 4).forEach((card) => {
-//     sliderTrack.appendChild(card.cloneNode(true));
-//   });
-
-//   let currentSlide = 0;
-//   let autoSlide;
-
-//   // dots create
-//   sliderDots.innerHTML = "";
-//   originalCards.forEach((_, index) => {
-//     const dot = document.createElement("span");
-//     dot.classList.add("slider-dot");
-//     if (index === 0) dot.classList.add("active");
-
-//     dot.addEventListener("click", () => {
-//       currentSlide = index;
-//       updateSlider(true);
-//       resetAutoSlide();
-//     });
-
-//     sliderDots.appendChild(dot);
-//   });
-
-//   const dots = sliderDots.querySelectorAll(".slider-dot");
-
-//   function updateDots() {
-//     dots.forEach((dot) => dot.classList.remove("active"));
-//     dots[currentSlide % originalCards.length].classList.add("active");
-//   }
-
-//   function updateSlider(animate = true) {
-//     if (!animate) {
-//       sliderTrack.style.transition = "none";
-//     } else {
-//       sliderTrack.style.transition = "transform 0.5s ease";
-//     }
-
-//     const translateX = -(halfCard + currentSlide * step);
-//     sliderTrack.style.transform = `translateX(${translateX}px)`;
-
-//     updateDots();
-//   }
-
-//   function nextSlide() {
-//     currentSlide++;
-//     updateSlider(true);
-//   }
-
-//   sliderTrack.addEventListener("transitionend", () => {
-//     if (currentSlide === originalCards.length) {
-//       currentSlide = 0;
-//       updateSlider(false);
-
-//       // force reflow so browser transition reset properly
-//       void sliderTrack.offsetWidth;
-
-//       sliderTrack.style.transition = "transform 0.5s ease";
-//       updateDots();
-//     }
-//   });
-
-//   function startAutoSlide() {
-//     autoSlide = setInterval(nextSlide, 5000);
-//   }
-
-//   function resetAutoSlide() {
-//     clearInterval(autoSlide);
-//     startAutoSlide();
-//   }
-
-//   updateSlider(false);
-//   startAutoSlide();
-
+// slider code
 
 const sliderTrack = document.getElementById("sliderTrack");
-const cards = document.querySelectorAll(".recommendation-card");
 const dotsContainer = document.getElementById("sliderDots");
 
-let currentSlide = 0;
+let originalCards = document.querySelectorAll(".recommendation-card");
+
+let cardsToShow = window.innerWidth > 900 ? 3 : 1;
+
+
+
+for (let i = 0; i < cardsToShow; i++) {
+  const firstClone = originalCards[i].cloneNode(true);
+  firstClone.classList.add("clone");
+  sliderTrack.appendChild(firstClone);
+}
+
+for (let i = originalCards.length - cardsToShow; i < originalCards.length; i++) {
+  const lastClone = originalCards[i].cloneNode(true);
+  lastClone.classList.add("clone");
+  sliderTrack.insertBefore(lastClone, sliderTrack.firstChild);
+}
+
+const cards = document.querySelectorAll(".recommendation-card");
+
+let currentSlide = cardsToShow;
 
 function getSliderValues() {
   const card = cards[0];
-  const gap = parseInt(window.getComputedStyle(sliderTrack).gap) || 0;
+
+  const gap =
+    parseInt(window.getComputedStyle(sliderTrack).gap) || 0;
+
   const cardWidth = card.offsetWidth;
+
   const step = cardWidth + gap;
 
   let sideOffset = 0;
 
-  /*
-    Desktop design:
-    Keep fixed side padding and move only cards.
-    This helps maintain half-card visibility.
-  */
   if (window.innerWidth > 900) {
     sideOffset = 130;
-  } else {
-    sideOffset = 0;
   }
 
   return { step, sideOffset };
 }
 
-function updateSlider() {
+
+
+function updateSlider(withTransition = true) {
   const { step, sideOffset } = getSliderValues();
+
+  if (withTransition) {
+    sliderTrack.style.transition = "transform 0.5s ease";
+  } else {
+    sliderTrack.style.transition = "none";
+  }
 
   sliderTrack.style.transform = `translateX(${sideOffset - currentSlide * step}px)`;
 
+  updateDots();
+}
+
+
+
+function updateDots() {
+  const realIndex =
+    (currentSlide - cardsToShow + originalCards.length) %
+    originalCards.length;
+
   document.querySelectorAll(".slider-dot").forEach((dot, index) => {
-    dot.classList.toggle("active", index === currentSlide);
+    dot.classList.toggle("active", index === realIndex);
   });
 }
 
-cards.forEach((_, index) => {
+
+
+originalCards.forEach((_, index) => {
   const dot = document.createElement("span");
+
   dot.classList.add("slider-dot");
 
   if (index === 0) {
@@ -170,43 +115,81 @@ cards.forEach((_, index) => {
   }
 
   dot.addEventListener("click", () => {
-    currentSlide = index;
+    currentSlide = index + cardsToShow;
+
     updateSlider();
   });
 
   dotsContainer.appendChild(dot);
 });
 
-setInterval(() => {
+
+function nextSlide() {
   currentSlide++;
 
-  if (currentSlide >= cards.length) {
-    currentSlide = 0;
+  updateSlider();
+}
+
+let autoSlide = setInterval(nextSlide, 5000);
+
+
+sliderTrack.addEventListener("transitionend", () => {
+  const totalOriginal = originalCards.length;
+
+  if (currentSlide >= totalOriginal + cardsToShow) {
+    currentSlide = cardsToShow;
+
+    updateSlider(false);
   }
 
-  updateSlider();
-}, 5000);
+  
+  if (currentSlide < cardsToShow) {
+    currentSlide = totalOriginal + currentSlide;
 
-window.addEventListener("resize", () => {
-  currentSlide = 0;
-  updateSlider();
+    updateSlider(false);
+  }
 });
 
-updateSlider();
+
+
+window.addEventListener("resize", () => {
+  location.reload();
+});
+
+
+
+updateSlider(false);
 
 
 const hamburgerBtn = document.getElementById("hamburgerBtn");
 const navMenu = document.getElementById("navMenu");
 const navLinks = document.querySelectorAll(".nav-link");
 
-hamburgerBtn.addEventListener("click", () => {
-  hamburgerBtn.classList.toggle("active");
-  navMenu.classList.toggle("active");
-});
+if (hamburgerBtn && navMenu) {
+  function setMenuState(isOpen) {
+    hamburgerBtn.classList.toggle("active", isOpen);
+    navMenu.classList.toggle("active", isOpen);
+    document.body.classList.toggle("menu-open", isOpen);
+    hamburgerBtn.setAttribute("aria-expanded", String(isOpen));
+    hamburgerBtn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+  }
 
-navLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    hamburgerBtn.classList.remove("active");
-    navMenu.classList.remove("active");
+  hamburgerBtn.addEventListener("click", () => {
+    const isOpen = !navMenu.classList.contains("active");
+    setMenuState(isOpen);
   });
-});
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (window.innerWidth <= 900) {
+        setMenuState(false);
+      }
+    });
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 900) {
+      setMenuState(false);
+    }
+  });
+}
